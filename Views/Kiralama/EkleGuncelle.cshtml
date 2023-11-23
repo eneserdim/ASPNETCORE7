@@ -1,0 +1,69 @@
+﻿@model Kiralama
+
+
+
+
+<form method="post" enctype="multipart/form-data">
+
+
+
+    <div class="row">
+        <div class="col-10">
+            <div class="border p-3 mt-5">
+                <div class="row pb-3">
+
+                    <h2 style="text-align:center">@(Model == null ? "Yeni Kiralama" : "Kiralama Güncelle")</h2>
+                </div>
+
+                <div class="class mb-3">
+                    <label class="pb-0">Öğrenci No</label>
+                    <input type="text" asp-for="OgrenciId" class="form-control">
+                    <span asp-validation-for="OgrenciId" class="text-danger"></span>
+
+                    <label class="pb-0">Kiralanacak Kitap</label>
+                    <select type="text" asp-for="KitapId" asp-items="ViewBag.KitapList" class="form-select"></select>
+
+                    <label class="pb-0">Kiralama Başlangıç Tarihi</label>
+                    <input data-provide="datepicker" asp-for="BaslangicTarihi" class="form-control">
+                    <span asp-validation-for="BaslangicTarihi" class="text-danger"></span>
+
+                    <label class="pb-0">Kiralama Başlangıç Tarihi</label>
+                    <input data-provide="datepicker" asp-for="BitisTarihi" class="form-control">
+                    <span asp-validation-for="BitisTarihi" class="text-danger"></span>
+
+
+                </div>
+
+                @if (Model != null)
+                {
+                    <button type="submit" class="btn btn-lg btn-success" style="width:250px" asp-controller="Kiralama" asp-action="EkleGuncelle">Güncelle</button>
+                }
+                else
+                {
+                    <button type="submit" class="btn btn-lg btn-success" style="width:250px" asp-controller="Kiralama" asp-action="EkleGuncelle">Yeni Kiralama</button>
+                }
+
+                <a asp-controller="Kiralama" asp-action="Index" class="btn btn-lg btn-danger" type="button" style="width:250px">Vazgeç</a>
+            </div>
+        </div>
+
+        @if (Model != null)
+        {
+            <br />
+
+            <br />
+            <div class="col-2">
+                <img src="@Model.Kitap.ResimUrl" width="100%" style="border-radius:7px; border:1px solid #bbb9b9;" />
+            </div>
+        }
+    </div>
+
+</form>
+
+
+
+@* @section Scripts{
+    @{
+    <partial name="_ValidationScriptsPartial"/>
+    }
+} *@

@@ -1,0 +1,31 @@
+﻿@model Kiralama
+
+<form method="post">
+
+    <div class="border p-3 mt-5">
+        <div class="row pb-3">
+            <h2 style="text-align:center">Kiralama Kaydı Silme</h2>
+        </div>
+
+        <div class="class mb-3">
+            <label class="pb-0">Öğrenci No</label>
+            <input disabled type="text" asp-for="OgrenciId" class="form-control">
+
+            <label class="pb-0">Kiralanacak Kitap</label>
+            <select disabled type="text" asp-for="KitapId" asp-items="ViewBag.KitapList" class="form-select"></select>
+
+
+            <label class="pb-0">Kiralama Başlangıç Tarihi</label>
+            <input disabled type="datetime" asp-for="BaslangicTarihi" class="form-control">
+
+            <label class="pb-0">Kiralama Başlangıç Tarihi</label>
+            <input disabled type="datetime" asp-for="BitisTarihi" class="form-control">
+
+        </div>
+
+
+        <button type="submit" class="btn btn-lg btn-success" style="width:250px" >Sil</button>
+        <a asp-controller="Kiralama" asp-action="Index" class="btn btn-lg btn-danger" type="button" style="width:250px">Vazgeç</a>
+    </div>
+
+</form>

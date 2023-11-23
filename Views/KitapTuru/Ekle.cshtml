@@ -1,0 +1,32 @@
+﻿@model KitapTuru
+
+
+
+
+<form method="post">
+
+    <div class="border p-3 mt-5">
+        <div class="row pb-3">
+                <h2 style="text-align:center">Kitap Türü Ekle</h2>
+        </div>
+
+        <div class="class mb-3">
+            <label asp-for="Ad" class="pb-0"></label>
+            <input type="text" asp-for="Ad" class="form-control" placeholder="Örnek: Roman">
+            <span asp-validation-for="Ad" class="text-danger"></span>
+        </div>
+
+
+        <button type="submit" class="btn btn-lg btn-success" style="width:250px" asp-controller="KitapTuru" asp-action="Ekle">Ekle</button>
+         <a asp-controller="KitapTuru" asp-action="Index" class="btn btn-lg btn-danger" type="button" style="width:250px">Vazgeç</a>
+    </div>
+
+</form>
+
+
+
+@* @section Scripts{
+    @{
+    <partial name="_ValidationScriptsPartial"/>
+    }
+} *@

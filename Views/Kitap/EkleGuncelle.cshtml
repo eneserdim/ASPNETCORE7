@@ -1,0 +1,78 @@
+﻿@model Kitap
+
+
+
+
+<form method="post" enctype="multipart/form-data">
+
+
+    <input asp-for="ResimUrl" hidden />
+    <div class="row">
+
+        <div class="col-10">
+            <div class="border p-3 mt-5">
+                <div class="row pb-3">
+
+                    <h2 style="text-align:center">@(Model == null ? "Kitap Ekle" : "Kitap Güncelle")</h2>
+                </div>
+
+                <div class="class mb-3">
+                    <label asp-for="KitapAdi" class="pb-0"></label>
+                    <input type="text" asp-for="KitapAdi" class="form-control">
+                    <span asp-validation-for="KitapAdi" class="text-danger"></span>
+
+                    <label asp-for="KitapTuruId" class="pb-0"></label>
+                    <select type="text" asp-for="KitapTuruId" asp-items="ViewBag.KitapTuruList" class="form-select"></select>
+
+                    <label asp-for="Tanim" class="pb-0"></label>
+                    <input type="text" asp-for="Tanim" class="form-control">
+                    <span asp-validation-for="Tanim" class="text-danger"></span>
+
+                    <label asp-for="Yazar" class="pb-0"></label>
+                    <input type="text" asp-for="Yazar" class="form-control">
+                    <span asp-validation-for="Yazar" class="text-danger"></span>
+
+                    <label asp-for="Fiyat" class="pb-0"></label>
+                    <input type="number" asp-for="Fiyat" class="form-control">
+                    <span asp-validation-for="Fiyat" class="text-danger"></span>
+
+                    <label asp-for="ResimUrl" class="pb-0"></label>
+                    <input type="file" name="file" class="form-control">
+                </div>
+
+                @if (Model != null)
+                {
+                    <button type="submit" class="btn btn-lg btn-success" style="width:250px" asp-controller="Kitap" asp-action="EkleGuncelle">Güncelle</button>
+                }
+                else
+                {
+                    <button type="submit" class="btn btn-lg btn-success" style="width:250px" asp-controller="Kitap" asp-action="EkleGuncelle">Ekle</button>
+                }
+
+                <a asp-controller="KitapTuru" asp-action="Index" class="btn btn-lg btn-danger" type="button" style="width:250px">Vazgeç</a>
+            </div>
+        </div>
+
+        @if (Model != null)
+        {
+            <div class="col-2">
+                <img src="@Model.ResimUrl" width="100%" style="border-radius:7px; border:1px solid #bbb9b9;" />
+            </div>
+        }
+
+
+
+    </div>
+
+
+
+
+</form>
+
+
+
+@* @section Scripts{
+    @{
+    <partial name="_ValidationScriptsPartial"/>
+    }
+} *@
